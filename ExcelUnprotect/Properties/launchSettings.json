@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ExcelUnprotect": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Xavier\\Downloads\\COBIT_2019.xlsx"
+    }
+  }
+}
