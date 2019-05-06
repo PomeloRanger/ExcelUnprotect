@@ -10,14 +10,19 @@ namespace ExcelUnprotect
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0)
+            LoadDocument(args);
+        }
+
+        private static void LoadDocument(string[] document)
+        {
+            if (document.Length == 0)
             {
                 Console.WriteLine("No file was detected. Please drag and drop your Excel Files");
                 Console.ReadLine();
             }
             else
             {
-                foreach (var files in args)
+                foreach (var files in document)
                 {
                     if (Path.GetExtension(files) == ".xlsx")
                     {
@@ -46,7 +51,7 @@ namespace ExcelUnprotect
 
                         //Save back to original file location with an added + _unprotected and change file extension to .xlsx
                         Console.WriteLine("File is unprotected with the name " + files + "_unprotected.xlsx");
-                        File.Copy(Path.GetTempPath() + "ExcelUnprotect\\unprotectedworkbook.zip", files + "_unprotected.xlsx",  true);
+                        File.Copy(Path.GetTempPath() + "ExcelUnprotect\\unprotectedworkbook.zip", files + "_unprotected.xlsx", true);
 
                         //Delete folder from Temp path
                         Console.WriteLine("Deleting Temp folder");
@@ -57,8 +62,6 @@ namespace ExcelUnprotect
                         Console.WriteLine("This file is not supported");
                     }
                 }
-                Console.WriteLine("Please press any key to continue.");
-                Console.Read();
             }
         }
 
